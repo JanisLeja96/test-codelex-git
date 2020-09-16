@@ -77,7 +77,7 @@ $cars = [
 ];
 
 foreach ($cars as $car) {
-    echo "Name: {$car->getName()} Fuel capacity: {$car->getFuelCapacity()} liters ";
+    echo "Name: {$car->getName()}, Fuel capacity: {$car->getFuelCapacity()} liters, ";
     if ($car instanceof Audi) {
         echo "Exhaust count: {$car->getExhaustCount()}";
     } else if ($car instanceof BMW) {
