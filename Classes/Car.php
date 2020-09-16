@@ -71,9 +71,9 @@ class Opel extends Car
 }
 
 $cars = [
-    new Audi('Audi', 70, 3),
-    new BMW('BMW', 100, 5),
-    new Opel('Opel', 85, 8)
+    new Audi('A4', 70, 3),
+    new BMW('X5', 100, 5),
+    new Opel('Insignia', 85, 8)
 ];
 
 foreach ($cars as $car) {
