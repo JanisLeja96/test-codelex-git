@@ -6,7 +6,7 @@ class Person
     private ?string $middleName;
     private string $surname;
 
-    public function __construct($name, $middleName = null, $surname)
+    public function __construct($name, $surname, $middleName = null)
     {
         $this->name = $name;
         $this->middleName = $middleName;
