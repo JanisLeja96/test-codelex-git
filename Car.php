@@ -6,13 +6,22 @@ class Car
     private string $numberPlate;
     private int $maxCapacity;
     private int $currentFuel;
+    private int $mileage;
+    private int $pin;
 
-    public function __construct(string $make, string $numberPlate, int $maxCapacity)
+    public function __construct(string $make, string $numberPlate, int $maxCapacity, int $pin)
     {
         $this->make = $make;
         $this->numberPlate = $numberPlate;
         $this->maxCapacity = $maxCapacity;
         $this->currentFuel = $maxCapacity;
+        $this->mileage = 0;
+        $this->pin = $pin;
+    }
+
+    public function __toString()
+    {
+        return "{$this->make} {$this->numberPlate} fuel capacity: {$this->maxCapacity}\n";
     }
 
     public function getMake()
@@ -34,14 +43,48 @@ class Car
     {
         $this->currentFuel -= 1;
     }
+
+    public function getMileage()
+    {
+        return $this->mileage;
+    }
+
+    public function increaseMileage(int $distance)
+    {
+        $this->mileage += $distance;
+    }
+
+    public function getPin()
+    {
+        return $this->pin;
+    }
 }
 
-$myCar = new Car('Audi', 'LV-0000', 80);
-$mileage = 0;
-while ($myCar->getCurrentFuel() > 0) {
-    $mileage += 10;
-    if ($mileage % 10 == 0) {
-        $myCar->spendFuel();
-        echo "{$mileage}km: {$myCar->getMake()} {$myCar->getNumberPlate()} {$myCar->getCurrentFuel()} liters remaining\n";
+$audi = new Car('Audi', 'LV-0000', 80, 123);
+$bmw = new Car('BMW', 'LV-1234', 60, 456);
+$opel = new Car('Opel', 'XX-3232', 40, 000);
+
+echo "Cars available for driving: \n";
+$availableCars = [$audi, $bmw, $opel];
+foreach($availableCars as $car) {
+    echo $car;
+}
+
+$choice = (int) readline('Choose which car to drive(1-3): ');
+$selectedCar = $availableCars[$choice - 1];
+
+$pin = readline("Enter PIN for {$selectedCar->getMake()}: ");
+$attempts = 3;
+while ($pin != $selectedCar->getPin() && $attempts > 0) {
+    echo "Incorrect PIN entered! {$attempts} attempts remaining.\n";
+    $attempts--;
+    $pin = readline("Enter PIN: ");
+}
+
+if ($pin == $selectedCar->getPin()) {
+    while ($selectedCar->getCurrentFuel() > 0) {
+        $selectedCar->increaseMileage(10);
+        $selectedCar->spendFuel();
+        echo "{$selectedCar->getMileage()}km: {$selectedCar->getMake()} {$selectedCar->getNumberPlate()} {$selectedCar->getCurrentFuel()} liters remaining\n";
     }
 }
