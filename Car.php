@@ -66,11 +66,11 @@ $opel = new Car('Opel', 'XX-3232', 40, 000);
 
 echo "Cars available for driving: \n";
 $availableCars = [$audi, $bmw, $opel];
-foreach($availableCars as $car) {
+foreach ($availableCars as $car) {
     echo $car;
 }
 
-$choice = (int) readline('Choose which car to drive(1-3): ');
+$choice = (int)readline('Choose which car to drive(1-3): ');
 $selectedCar = $availableCars[$choice - 1];
 
 $pin = readline("Enter PIN for {$selectedCar->getMake()}: ");
@@ -86,5 +86,6 @@ if ($pin == $selectedCar->getPin()) {
         $selectedCar->increaseMileage(10);
         $selectedCar->spendFuel();
         echo "{$selectedCar->getMileage()}km: {$selectedCar->getMake()} {$selectedCar->getNumberPlate()} {$selectedCar->getCurrentFuel()} liters remaining\n";
+        sleep(1);
     }
 }
