@@ -7,21 +7,21 @@ class Car
     private int $maxCapacity;
     private int $currentFuel;
     private int $mileage;
-    private int $pin;
+    private string $pin;
 
-    public function __construct(string $make, string $numberPlate, int $maxCapacity, int $pin)
+    public function __construct(string $make, string $numberPlate, int $maxCapacity, string $pin)
     {
         $this->make = $make;
         $this->numberPlate = $numberPlate;
         $this->maxCapacity = $maxCapacity;
         $this->currentFuel = $maxCapacity;
-        $this->mileage = 0;
         $this->pin = $pin;
+        $this->mileage = 0;
     }
 
     public function __toString()
     {
-        return "{$this->make} {$this->numberPlate} fuel capacity: {$this->maxCapacity}\n";
+        return "{$this->make} {$this->numberPlate} fuel capacity: {$this->maxCapacity} PIN: {$this->pin}\n";
     }
 
     public function getMake()
@@ -60,9 +60,9 @@ class Car
     }
 }
 
-$audi = new Car('Audi', 'LV-0000', 80, 123);
-$bmw = new Car('BMW', 'LV-1234', 60, 456);
-$opel = new Car('Opel', 'XX-3232', 40, 000);
+$audi = new Car('Audi', 'LV-0000', 80, '123');
+$bmw = new Car('BMW', 'LV-1234', 60, '456');
+$opel = new Car('Opel', 'XX-3232', 40, '111');
 
 echo "Cars available for driving: \n";
 $availableCars = [$audi, $bmw, $opel];
