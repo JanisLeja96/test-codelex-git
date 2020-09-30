@@ -36,7 +36,7 @@ class File
     {
         if ($this->numbers) {
             $average = array_sum($this->numbers) / count($this->numbers);
-            return round($average, 2);
+            return number_format($average, 2);
         }
         return 0;
     }
