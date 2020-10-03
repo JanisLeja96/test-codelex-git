@@ -40,8 +40,9 @@ while ($loop) {
             break;
         case 2:
             if (count ($store->getBuyer()->getOwnedProducts()) > 0) {
+                echo PHP_EOL . 'Purchased products:' . PHP_EOL;
                 foreach ($store->getBuyer()->getOwnedProducts() as $product) {
-                    echo $product . ' ';
+                    echo $product . PHP_EOL;
                 }
             } else {
                 echo PHP_EOL;
